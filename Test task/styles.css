@@ -13,17 +13,17 @@ body {
     background: var(--main-color);
     display: flex;
     justify-content: center;
+    color: var(--font-color);
+    font-size: 80px;
+    font-family: Palace_of_Sports;
     /*align-items: center;*/
 }
 
 .timer {
     margin-top: 100px;
-    display: flex;
     flex-direction: column;
     height: 400px;
-    width: 500px;
-    justify-content: center;
-    align-items: center;
+    width: 600px;
 }
 
 .neo-box {
@@ -33,31 +33,56 @@ body {
     -10px -10px 21px #8888ea;
 }
 
-span {
-    color: var(--font-color);
-    font-size: 100px;
-    font-family: Palace_of_Sports;
+#remainingTime {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 
+/*span {*/
+/*    color: var(--font-color);*/
+/*    font-size: 100px;*/
+/*    font-family: Palace_of_Sports;*/
+/*}*/
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .number {
-    width: 30px;
+    width: 150px;
+}
 
+.colon {
+    width: 25px;
 }
 
 input {
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 20px;
+    padding: 20px;
     margin: 10px;
     outline:none;
     border: none;
 }
 
 button {
-    width: 40px;
-    height: 40px;
-    background-color: var(--font-color);
+    width: 60px;
+    height: 60px;
+    background-color: var(--main-color);
+    box-shadow: 10px 10px 21px #4242cb,
+    -10px -10px 21px #8888ea;
+    color: var(--font-color);
+    font-family: Palace_of_Sports;
+    font-size: 20px;
     border:0;
-    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
-    padding:10px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 20px;
 }
+button:hover {
+    box-shadow: 5px 5px 16px #4242cb,
+    -5px -5px 16px #8888ea;
+}
+

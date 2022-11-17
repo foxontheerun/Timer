@@ -2,8 +2,6 @@ const inputEl = document.querySelector('input');
 const buttonEl = document.querySelector('button');
 const timerEl = document.getElementById('remainingTime');
 
-// Напишите реализацию createTimerAnimator
-// который будет анимировать timerEl
 const createTimerAnimator = () => {
   let sec;
   let min;
@@ -15,20 +13,18 @@ const createTimerAnimator = () => {
         min = seconds / 60 % 60 // Получаем минуты
         hours = seconds / 60 / 60 % 60 // Получаем часы
       if (seconds <= 0) {
-        // Таймер удаляется
         clearInterval(timer);
-        // Выводит сообщение что время закончилось
         alert("Время закончилось");
-      } else { // Иначе
-        // Создаём строку с выводом времени
-        remainingTime = `<span class="number">${Math.trunc(hours)}</span>
-                        <span class="number">:<span/>
-                        <span class="number">${Math.trunc(min)}<span/>
-                        <span>:<span/>
-                        <span class="number">${sec}<span/>`;
+      }
+      else {
+        remainingTime = `<div class="number center">${Math.trunc(hours)}</div>
+                            <div class="colon center">:</div>
+                            <div class="number center">${Math.trunc(min)}</div>
+                            <div class="colon center">:</div>
+                            <div class="number center">${sec}</div>`;
         timerEl.innerHTML = remainingTime;
       }
-      --seconds; // Уменьшаем таймер
+      --seconds;
     }, 1000)
   };
 };
