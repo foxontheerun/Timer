@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #6565ee;
+    --font-color: white;
+}
+
+body {
+    background: var(--main-color);
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.timer {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.neo-box {
+    border-radius: 50px;
+    background-color: var(--main-color);
+    box-shadow: 10px 10px 21px #4242cb,
+    -10px -10px 21px #8888ea;
+}
+
+span {
+    color: var(--font-color);
+    font-size: 100px;
+    font-family: Palace_of_Sports;
+}
+
+.number {
+    width: 30px;
+
+}
+
+input {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    outline:none;
+    border: none;
+}
+
+button {
+    width: 40px;
+    height: 40px;
+    background-color: var(--font-color);
+    border:0;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    padding:10px;
+    border-radius: 10px;
+}
