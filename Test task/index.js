@@ -7,7 +7,7 @@ const createTimerAnimator = () => {
   let min;
   let hours;
   let remainingTime;
-  let deltaColor = 0;
+  let hslColorDelta = 0;
   return (seconds, delta) => {
     let timer = setInterval(function () {
       sec = seconds % 60
@@ -27,9 +27,9 @@ const createTimerAnimator = () => {
       --seconds;
     }, 1000);
     let colorChangeTimer = setInterval(function () {
-      colorChange(deltaColor);
-      deltaColor++;
-      if (deltaColor === 120) {
+      colorChange(hslColorDelta);
+      hslColorDelta++;
+      if (hslColorDelta === 120) {
         clearInterval(colorChangeTimer);
       }
     }, delta/120*1000);
