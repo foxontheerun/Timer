@@ -5,7 +5,9 @@
 }
 
 :root {
-    --main-color: #6565ee;
+    --main-color: hsl(240, 79%, 66%);
+    --light-shadow: hsl(240, 70%, 73%);
+    --dark-shadow: hsl(240, 57%, 53%);
     --font-color: white;
 }
 
@@ -15,7 +17,7 @@ body {
     justify-content: center;
     color: var(--font-color);
     font-size: 80px;
-    font-family: Palace_of_Sports;
+    font-family: 'Rajdhani', sans-serif;
     /*align-items: center;*/
 }
 
@@ -29,8 +31,8 @@ body {
 .neo-box {
     border-radius: 50px;
     background-color: var(--main-color);
-    box-shadow: 10px 10px 21px #4242cb,
-    -10px -10px 21px #8888ea;
+    box-shadow: 10px 10px 21px var(--dark-shadow),
+    -10px -10px 21px var(--light-shadow);
 }
 
 #remainingTime {
@@ -66,23 +68,24 @@ input {
     margin: 10px;
     outline:none;
     border: none;
+    font-size: 20px;
 }
 
 button {
     width: 60px;
     height: 60px;
     background-color: var(--main-color);
-    box-shadow: 10px 10px 21px #4242cb,
-    -10px -10px 21px #8888ea;
+    box-shadow: 10px 10px 21px var(--dark-shadow),
+    -10px -10px 21px var(--light-shadow);
     color: var(--font-color);
-    font-family: Palace_of_Sports;
+    font-family: 'Rajdhani', sans-serif;
     font-size: 20px;
     border:0;
     padding: 10px;
     border-radius: 20px;
 }
 button:hover {
-    box-shadow: 5px 5px 16px #4242cb,
-    -5px -5px 16px #8888ea;
+    box-shadow: 5px 5px 16px var(--dark-shadow),
+    -5px -5px 16px var(--light-shadow);
 }
 
