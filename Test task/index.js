@@ -57,4 +57,5 @@ const colorChange = (num) => {
   document.documentElement.style.setProperty('--main-color', `hsl(${240+num}, 79%, 66%)`);
   document.documentElement.style.setProperty('--light-shadow', `hsl(${240+num}, 70%, 73%)`);
   document.documentElement.style.setProperty('--dark-shadow', `hsl(${240+num}, 57%, 53%)`);
+  document.documentElement.style.setProperty('--input-color', `hsl(${240+num}, 100%, 87%)`);
 }

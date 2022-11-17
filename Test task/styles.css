@@ -8,6 +8,7 @@
     --main-color: hsl(240, 79%, 66%);
     --light-shadow: hsl(240, 70%, 73%);
     --dark-shadow: hsl(240, 57%, 53%);
+    --input-color: hsl(240, 100%, 87%);
     --font-color: white;
 }
 
@@ -56,10 +57,15 @@ body {
 }
 .number {
     width: 150px;
+    color: var(--font-color);
 }
 
 .colon {
     width: 25px;
+}
+
+.form {
+    margin-bottom: 20px;
 }
 
 input {
@@ -69,6 +75,7 @@ input {
     outline:none;
     border: none;
     font-size: 20px;
+    background-color: var(--input-color);
 }
 
 button {
@@ -84,6 +91,7 @@ button {
     padding: 10px;
     border-radius: 20px;
 }
+
 button:hover {
     box-shadow: 5px 5px 16px var(--dark-shadow),
     -5px -5px 16px var(--light-shadow);
