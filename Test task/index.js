@@ -33,7 +33,6 @@ const createTimerAnimator = () => {
       }
       , 1000);
     let colorChangeTimer = setInterval(function () {
-
       if(!isPaused) {
         colorChange(hslColorDelta);
         if (hslColorDelta === 120) {
@@ -53,7 +52,10 @@ inputEl.addEventListener('input', () => {
 });
 
 buttonEl.addEventListener('click', () => {
-
+  if (inputEl.value > 86400) {
+    alert('The time you entered exceeds the number of seconds in a day. \nВведенное вами время превышает количество секунд в сутках.');
+    window.location.reload();
+  }
   if (isStart) {;
     const seconds = Number(inputEl.value);
     console.log(seconds);
