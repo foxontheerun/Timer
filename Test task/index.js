@@ -53,13 +53,18 @@ inputEl.addEventListener('input', () => {
 });
 
 buttonEl.addEventListener('click', () => {
+
   if (isStart) {;
     const seconds = Number(inputEl.value);
     console.log(seconds);
     animateTimer(seconds);
     inputEl.value = ``;
+    buttonEl.innerHTML = 'Reset';
+    isStart = false;
+  } else {
+    buttonEl.innerHTML = 'Start';
+    window.location.reload();
   }
-  isStart = false;
 });
 
 
@@ -68,10 +73,13 @@ buttonPause.addEventListener("click", () => {
     isPaused = false;
     buttonPause.innerHTML = '||';
     colorChange(hslColorDelta);
+    document.documentElement.style.setProperty('--font-color', 'white');
+
   } else {
     isPaused = true;
     buttonPause.innerHTML = 'Play';
     colorChange(-90);
+    document.documentElement.style.setProperty('--font-color', '#616161');
   }
 
 });

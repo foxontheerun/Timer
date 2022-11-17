@@ -19,7 +19,6 @@ body {
     color: var(--font-color);
     font-size: 80px;
     font-family: 'Rajdhani', sans-serif;
-    /*align-items: center;*/
 }
 
 .timer {
@@ -88,7 +87,7 @@ button {
     font-family: 'Rajdhani', sans-serif;
     font-size: 20px;
     border:0;
-    padding: 10px;
+    padding: 8px;
     border-radius: 20px;
 }
 
