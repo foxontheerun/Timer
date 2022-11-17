@@ -1,36 +1,45 @@
 const inputEl = document.querySelector('input');
-const buttonEl = document.querySelector('button');
+const buttonEl = document.getElementById('start');
+const buttonPause = document.getElementById('pause');
 const timerEl = document.getElementById('remainingTime');
+let isPaused = false;
+let isStart = true;
+let hslColorDelta = 0;
 
 const createTimerAnimator = () => {
   let sec;
   let min;
   let hours;
   let remainingTime;
-  let hslColorDelta = 0;
-  return (seconds, delta) => {
+  return (seconds) => {
+    const delta = seconds;
     let timer = setInterval(function () {
-      sec = seconds % 60
-      min = seconds / 60 % 60
-      hours = seconds / 60 / 60 % 60
-
-      remainingTime = `<div class="number center">${Math.trunc(hours)}</div>
+      if(!isPaused){
+        /* Выполняемый код... */
+        sec = seconds % 60;
+        min = seconds / 60 % 60;
+        hours = seconds / 60 / 60 % 60;
+        remainingTime = `<div class="number center">${Math.trunc(hours)}</div>
                             <div class="colon center">:</div>
                             <div class="number center">${Math.trunc(min)}</div>
                             <div class="colon center">:</div>
                             <div class="number center">${sec}</div>`;
-      timerEl.innerHTML = remainingTime;
-      if (seconds <= 0) {
-        clearInterval(timer);
-        // alert("Время закончилось");
+        timerEl.innerHTML = remainingTime;
+        if (seconds <= 0) {
+          clearInterval(timer);
+        }
+        --seconds;
       }
-      --seconds;
-    }, 1000);
+      }
+      , 1000);
     let colorChangeTimer = setInterval(function () {
-      colorChange(hslColorDelta);
-      hslColorDelta++;
-      if (hslColorDelta === 120) {
-        clearInterval(colorChangeTimer);
+
+      if(!isPaused) {
+        colorChange(hslColorDelta);
+        if (hslColorDelta === 120) {
+          clearInterval(colorChangeTimer);
+        }
+        hslColorDelta++;
       }
     }, delta/120*1000);
   };
@@ -44,13 +53,27 @@ inputEl.addEventListener('input', () => {
 });
 
 buttonEl.addEventListener('click', () => {
-  console.log(inputEl.value);
-  const seconds = Number(inputEl.value);
-  const delta = seconds;
+  if (isStart) {;
+    const seconds = Number(inputEl.value);
+    console.log(seconds);
+    animateTimer(seconds);
+    inputEl.value = ``;
+  }
+  isStart = false;
+});
 
-  animateTimer(seconds, delta);
 
-  inputEl.value = ``;
+buttonPause.addEventListener("click", () => {
+  if (isPaused) {
+    isPaused = false;
+    buttonPause.innerHTML = '||';
+    colorChange(hslColorDelta);
+  } else {
+    isPaused = true;
+    buttonPause.innerHTML = 'Play';
+    colorChange(-90);
+  }
+
 });
 
 const colorChange = (num) => {
