@@ -52,12 +52,16 @@ inputEl.addEventListener('input', () => {
 });
 
 buttonEl.addEventListener('click', () => {
-  if (inputEl.value > 86400) {
+  const seconds = Number(inputEl.value);
+  if (seconds > 86400) {
     alert('The time you entered exceeds the number of seconds in a day. \nВведенное вами время превышает количество секунд в сутках.');
     window.location.reload();
   }
+  if ( seconds == 0) {
+    alert('Please enter the time. \nПожалуйста, введите время.');
+    window.location.reload();
+  }
   if (isStart) {;
-    const seconds = Number(inputEl.value);
     console.log(seconds);
     animateTimer(seconds);
     inputEl.value = ``;
