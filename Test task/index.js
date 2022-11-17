@@ -9,9 +9,9 @@ const createTimerAnimator = () => {
   let remainingTime;
   return (seconds) => {
     let timer = setInterval(function () {
-        sec = seconds % 60 // Получаем секунды
-        min = seconds / 60 % 60 // Получаем минуты
-        hours = seconds / 60 / 60 % 60 // Получаем часы
+        sec = seconds % 60 
+        min = seconds / 60 % 60 
+        hours = seconds / 60 / 60 % 60 
       if (seconds <= 0) {
         clearInterval(timer);
         alert("Время закончилось");
