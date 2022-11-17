@@ -46,9 +46,8 @@ const createTimerAnimator = () => {
 
 const animateTimer = createTimerAnimator();
 
-inputEl.addEventListener('input', () => {
-  // Очистите input так, чтобы в значении
-  // оставались только числа
+inputEl.addEventListener('input', (e) => {
+  inputEl.value = inputEl.value.replace(/[^\d.]/g, '');
 });
 
 buttonEl.addEventListener('click', () => {
@@ -57,7 +56,7 @@ buttonEl.addEventListener('click', () => {
     alert('The time you entered exceeds the number of seconds in a day. \nВведенное вами время превышает количество секунд в сутках.');
     window.location.reload();
   }
-  if ( seconds == 0) {
+  if ( seconds == 0 ) {
     alert('Please enter the time. \nПожалуйста, введите время.');
     window.location.reload();
   }
