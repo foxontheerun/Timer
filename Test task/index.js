@@ -1,7 +1,8 @@
 const inputEl = document.querySelector('input');
-const buttonEl = document.getElementById('start');
+const buttonStart = document.getElementById('start');
 const buttonPause = document.getElementById('pause');
 const timerEl = document.getElementById('remainingTime');
+
 let isPaused = false;
 let isStart = true;
 let hslColorDelta = 0;
@@ -15,7 +16,6 @@ const createTimerAnimator = () => {
     const delta = seconds;
     let timer = setInterval(function () {
       if(!isPaused){
-        /* Выполняемый код... */
         sec = seconds % 60;
         min = seconds / 60 % 60;
         hours = seconds / 60 / 60 % 60;
@@ -32,6 +32,7 @@ const createTimerAnimator = () => {
       }
       }
       , 1000);
+    // Смена цвета фона с синего на красный в зависимости от оставшегося времени
     let colorChangeTimer = setInterval(function () {
       if(!isPaused) {
         colorChange(hslColorDelta);
@@ -46,32 +47,37 @@ const createTimerAnimator = () => {
 
 const animateTimer = createTimerAnimator();
 
-inputEl.addEventListener('input', (e) => {
+const colorChange = (num) => {
+  document.documentElement.style.setProperty('--main-color', `hsl(${240+num}, 79%, 66%)`);
+  document.documentElement.style.setProperty('--light-shadow', `hsl(${240+num}, 70%, 73%)`);
+  document.documentElement.style.setProperty('--dark-shadow', `hsl(${240+num}, 57%, 53%)`);
+  document.documentElement.style.setProperty('--input-color', `hsl(${240+num}, 100%, 87%)`);
+}
+
+inputEl.addEventListener('input', () => {
   inputEl.value = inputEl.value.replace(/[^\d.]/g, '');
 });
 
-buttonEl.addEventListener('click', () => {
+buttonStart.addEventListener('click', () => {
   const seconds = Number(inputEl.value);
   if (seconds > 86400) {
     alert('The time you entered exceeds the number of seconds in a day. \nВведенное вами время превышает количество секунд в сутках.');
     window.location.reload();
   }
-  if ( seconds == 0 ) {
+  if ( seconds === 0 ) {
     alert('Please enter the time. \nПожалуйста, введите время.');
     window.location.reload();
   }
-  if (isStart) {;
-    console.log(seconds);
+  if (isStart) {
     animateTimer(seconds);
     inputEl.value = ``;
-    buttonEl.innerHTML = 'Reset';
+    buttonStart.innerHTML = 'Reset';
     isStart = false;
   } else {
-    buttonEl.innerHTML = 'Start';
+    buttonStart.innerHTML = 'Start';
     window.location.reload();
   }
 });
-
 
 buttonPause.addEventListener("click", () => {
   if (isPaused) {
@@ -83,15 +89,9 @@ buttonPause.addEventListener("click", () => {
   } else {
     isPaused = true;
     buttonPause.innerHTML = 'Play';
-    colorChange(-90);
-    document.documentElement.style.setProperty('--font-color', '#616161');
+    // colorChange(-90);
+    document.documentElement.style.setProperty('--font-color', '#0d0f21');
   }
 
 });
 
-const colorChange = (num) => {
-  document.documentElement.style.setProperty('--main-color', `hsl(${240+num}, 79%, 66%)`);
-  document.documentElement.style.setProperty('--light-shadow', `hsl(${240+num}, 70%, 73%)`);
-  document.documentElement.style.setProperty('--dark-shadow', `hsl(${240+num}, 57%, 53%)`);
-  document.documentElement.style.setProperty('--input-color', `hsl(${240+num}, 100%, 87%)`);
-}
