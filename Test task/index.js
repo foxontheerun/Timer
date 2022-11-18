@@ -89,7 +89,7 @@ buttonPause.addEventListener("click", () => {
   } else {
     isPaused = true;
     buttonPause.innerHTML = 'Play';
-    // colorChange(-90);
+    colorChange(-110);
     document.documentElement.style.setProperty('--font-color', '#0d0f21');
   }
 
